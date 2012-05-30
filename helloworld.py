@@ -33,12 +33,11 @@ class MainPage(webapp.RequestHandler):
 			self.response.out.write('''<!DOCTYPE HTML>
 	<html>
 	<head>
-	<meta charset="utf-8">
-	
-	<title>%s class list</title>
+		<meta charset="utf-8">	
+		<title>%s class list</title>
 	</head>
 
-	<body>
+	<body background="static/dhs-list-background4.jpg>
 		<div align = "right" >
 		<h4><a href = "%s" >LOGOUT</a></h4>
 		</div>
@@ -133,18 +132,31 @@ class MainPage(webapp.RequestHandler):
 			</form>
 			</div>
 			'''%(theclass))
+			self.response.out.write('''
+	</body>
+	</html>''')
 			
 		else:
-			self.response.out.write('''<div>
-		<center>	
-		<img src="static/dunmanhighschoollogo.jpg" width="225" height="225" alt="dunmanlogo" >
-		<h1>DHS LIST!</h1> 
-		<h4><a href = "%s" >LOGIN</a></h4>		
-		</center>
-		</div>
+			self.response.out.write('''<!DOCTYPE HTML>
+		<html>
+		<head>
+			<meta charset="utf-8">
+			<title>DHS LIST</title>
+		</head>
+		<body>
+			<div>
+				<center>	
+				<img src="static/dunmanhighschoollogo.jpg" width="225" height="225" alt="dunmanlogo" >
+				<h1>DHS LIST!</h1> 
+				<h4><a href = "%s" >LOGIN</a></h4>		
+				</center>
+			</div>
+		</body>
 		''' % (users.create_login_url(self.request.uri)))
-			self.response.out.write ('''</body>''')
-			self.response.out.write ('''<center><footer>&copy;DHS 12Y5C23GJY1</footer></center></html>''')
+			self.response.out.write ('''<center>
+			<footer>&copy;DHS 12Y5C23GJY1</footer>
+			</center>
+		</html>''')
 class Submit(webapp.RequestHandler):
 	def post(self):
 		
